@@ -1,0 +1,32 @@
+name: "paction"
+author: "concaf"
+description: "pac + action, yeah yeah i know"
+inputs:
+  github_token:
+    description: "github token"
+    required: true
+  openshift_token:
+    description: "openshift token"
+    required: true
+  openshift_server:
+    description: "openshift server"
+    required: true
+  install_pipelines:
+    description: "install openshift pipelines in the cluster?"
+    default: "false"
+  install_pac:
+    description: "install pac in the cluster?"
+    default: "false"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+  - -g
+  - ${{ inputs.github_token }}
+  - -o
+  - ${{ inputs.openshift_token }}
+  - -s
+  - ${{ inputs.openshift_server }}
+branding:
+  icon: git-pull-request
+  color: red

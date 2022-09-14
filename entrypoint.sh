@@ -30,7 +30,7 @@ echo "logging into openshift cluster at $openshift_server..."
 oc login --token="$openshift_token" --server="$openshift_server" --insecure-skip-tls-verify=true
 
 echo "cloning repo $GITHUB_REPOSITORY"
-git clone "https://$github_token@github.com/$GITHUB_REPOSITORY" repo
+git clone "https://$GITHUB_REPOSITORY_OWNER:$github_token@github.com/$GITHUB_REPOSITORY" repo
 cd repo
 git checkout -b paction-branch
 
